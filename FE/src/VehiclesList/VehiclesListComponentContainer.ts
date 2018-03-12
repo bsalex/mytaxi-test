@@ -1,6 +1,6 @@
 import { Vehicle } from './../VehicleType/VehicleType';
 import { LoadingStatus } from './../store';
-import VehiclesList from './VehiclesList';
+import VehiclesListComponent from './VehiclesListComponent';
 import { AppStore } from '../store';
 import { connect, MapStateToProps } from 'react-redux';
 
@@ -19,4 +19,4 @@ export default connect(
         };
     }) as MapStateToProps<Props, {className: string}, AppStore>,
     undefined
-)(VehiclesList);
+)(VehiclesListComponent);
