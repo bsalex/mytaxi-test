@@ -2,7 +2,7 @@ import React from 'react';
 
 export default interface VehicleType {
     name: string;
-    listView: React.ReactElement<Vehicle>;
+    listView: React.ComponentType<Vehicle>;
     loader(): Promise<Vehicle[]>;
 }
 

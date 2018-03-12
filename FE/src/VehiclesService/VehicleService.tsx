@@ -14,11 +14,11 @@ class VehicleService {
         return ([] as Vehicle[]).concat(...(await Promise.all(vehiclePromises)));
     }
 
-    getListView(vehicle: Vehicle): React.ReactElement<Vehicle> {
+    getListView(vehicle: Vehicle): React.ComponentType<Vehicle> {
         const vehicleType = this.vehicleTypes.find((type) => type.name === vehicle.type);
-        
+
         if (!vehicleType) {
-            return (<div>Not registered vehicle type {vehicle.type}</div>);
+            return () => (<div>Not registered vehicle type {vehicle.type}</div>);
         }
 
         return vehicleType.listView;
