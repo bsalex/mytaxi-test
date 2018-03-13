@@ -1,6 +1,7 @@
 import React from 'react';
 import AppHeader from '../AppHeader/AppHeader';
 import VehiclesListComponentContainer from '../VehiclesList/VehiclesListComponentContainer';
+import MapComponentContainer from '../Map/MapComponentContainer';
 import './App.pcss';
 
 export default function() {
@@ -10,7 +11,9 @@ export default function() {
                 <AppHeader className="app__header" />
                 <VehiclesListComponentContainer className="app__vehicles-list" />
             </div>
-            <div className="app__map">Map</div>
+            <div className="app__map">
+                <MapComponentContainer className="" />
+            </div>
         </div>
     );
 }

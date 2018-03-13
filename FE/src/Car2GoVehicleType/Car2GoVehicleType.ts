@@ -33,7 +33,7 @@ export default {
             type: 'car2go',
             coordinates: {
                 longitude: car2GoVehicle.coordinates[0],
-                latitude: car2GoVehicle.coordinates[0]
+                latitude: car2GoVehicle.coordinates[1]
             },
             data: car2GoVehicle
         }));
