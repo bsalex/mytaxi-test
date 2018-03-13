@@ -34,5 +34,5 @@ export default connect(
                 dispatch(appActions.selectVehicle(vehicle));
             }
         };
-    }) as MapDispatchToProps<DispatchProps, OwnProps>,
+    }) as MapDispatchToProps<DispatchProps, OwnProps>
 )(VehiclesListComponent);

@@ -2,7 +2,8 @@ import { Vehicle } from './../VehicleType/VehicleType';
 import { LoadingStatus } from './../store';
 import MapComponent from './MapComponent';
 import { AppStore } from '../store';
-import { connect, MapStateToProps } from 'react-redux';
+import { connect, MapStateToProps, MapDispatchToProps } from 'react-redux';
+import * as appActions from '../App/AppActions';
 
 interface OwnProps {
     className: string;
@@ -14,6 +15,10 @@ interface StateProps extends OwnProps {
     selectedVehicleId?: string;
 }
 
+interface DispatchProps {
+    selectVehicle(vehicle: Vehicle): void;
+}
+
 export default connect(
     ((state, ownProps) => {
         return {
@@ -23,5 +28,11 @@ export default connect(
             selectedVehicleId: state.selectedVehicleId
         };
     }) as MapStateToProps<StateProps, {className: string}, AppStore>,
-    undefined
+    ((dispatch) => {
+        return {
+            selectVehicle(vehicle: Vehicle) {
+                dispatch(appActions.selectVehicle(vehicle));
+            }
+        };
+    }) as MapDispatchToProps<DispatchProps, OwnProps>
 )(MapComponent);

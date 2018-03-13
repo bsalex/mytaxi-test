@@ -8,10 +8,11 @@ interface Props {
     vehicles: Vehicle[];
     isLoading: boolean;
     selectedVehicleId?: string;
+    selectVehicle(vehicle: Vehicle): void;
 }
 
 const VehiclesMap = withScriptjs(withGoogleMap(function (
-    {className, vehicles, isLoading, selectedVehicleId}: Props
+    {className, vehicles, isLoading, selectedVehicleId, selectVehicle}: Props
 ) {
     if (!vehicles.length) {
         return (<div className={classnames(className, 'map')}/>);
@@ -77,8 +78,9 @@ const VehiclesMap = withScriptjs(withGoogleMap(function (
                                 scale: isSelectedVehicle ? 1 : 0.6
                             }}
                             key={vehicle.id}
-                            zIndex={isSelectedVehicle ? 1000000 : index}
+                            zIndex={isSelectedVehicle ? vehicles.length + 1 : index}
                             position={{ lat: vehicle.coordinates.latitude, lng: vehicle.coordinates.longitude }}
+                            onClick={() => selectVehicle(vehicle)}
                         />
                     );
                 })}
