@@ -16,6 +16,8 @@ export interface AppStore {
         status: LoadingStatus;
         values: Vehicle[];
     };
+
+    selectedVehicleId?: string;
 }
 
 export default createStore<AppStore>(
@@ -24,7 +26,8 @@ export default createStore<AppStore>(
         vehicles: {
             status: LoadingStatus.NOT_STARTED,
             values: []
-        }
+        },
+        selectedVehicleId: undefined
     },
     applyMiddleware(reduxThunk, createLogger({ collapsed: true }))
 );

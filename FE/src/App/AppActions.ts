@@ -18,9 +18,14 @@ export interface RejectVehicles {
     payload: Error;
 }
 
+export interface SelectVehicle {
+    type: actionTypes.SELECT_VEHICLE;
+    payload: Vehicle;
+}
+
 export interface FetchVehicles extends ThunkAction<void, AppStore, void> {}
 
-export type AppAction = RequestVehicles | ReceiveVehicles | RejectVehicles;
+export type AppAction = SelectVehicle | RequestVehicles | ReceiveVehicles | RejectVehicles;
 
 function requestVehicles(): RequestVehicles {
     return {
@@ -52,5 +57,12 @@ export function fetchVehicles(): FetchVehicles {
         } catch (e) {
             dispatch(rejectVehicles(e));
         }
+    };
+}
+
+export function selectVehicle(vehicle: Vehicle): SelectVehicle {
+    return {
+        type: actionTypes.SELECT_VEHICLE,
+        payload: vehicle
     };
 }

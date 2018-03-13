@@ -4,10 +4,14 @@ import MapComponent from './MapComponent';
 import { AppStore } from '../store';
 import { connect, MapStateToProps } from 'react-redux';
 
-interface Props {
+interface OwnProps {
     className: string;
+}
+
+interface StateProps extends OwnProps {
     vehicles: Vehicle[];
     isLoading: boolean;
+    selectedVehicleId?: string;
 }
 
 export default connect(
@@ -15,8 +19,9 @@ export default connect(
         return {
             vehicles: state.vehicles.values,
             isLoading: state.vehicles.status === LoadingStatus.IN_PROGRESS,
-            className: ownProps.className
+            className: ownProps.className,
+            selectedVehicleId: state.selectedVehicleId
         };
-    }) as MapStateToProps<Props, {className: string}, AppStore>,
+    }) as MapStateToProps<StateProps, {className: string}, AppStore>,
     undefined
 )(MapComponent);

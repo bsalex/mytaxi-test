@@ -8,6 +8,11 @@ export default function (
     action: AppAction
 ): AppStore {
     switch (action.type) {
+        case actionTypes.SELECT_VEHICLE:
+            return {
+                ...state,
+                selectedVehicleId: action.payload.id
+            };
         case actionTypes.REQUEST_VEHICLES:
             return {
                 ...state,

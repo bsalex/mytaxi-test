@@ -6,3 +6,6 @@ export type RECEIVE_VEHICLES = typeof RECEIVE_VEHICLES;
 
 export const REJECT_VEHICLES = 'REJECT_VEHICLES';
 export type REJECT_VEHICLES = typeof REJECT_VEHICLES;
+
+export const SELECT_VEHICLE = 'SELECT_VEHICLE';
+export type SELECT_VEHICLE = typeof SELECT_VEHICLE;

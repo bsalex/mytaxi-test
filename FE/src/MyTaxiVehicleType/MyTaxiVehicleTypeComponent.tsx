@@ -10,7 +10,7 @@ export default function (vehicle: MyTaxiVehicle) {
     return (
         <div className="vehicle-list-item">
             <div className="vehicle-list-item__title">
-                MyTaxi {vehicle.data.type}
+                MyTaxi {vehicle.data.type} {vehicle.data.id}
             </div>
             <div className="vehicle-list-item__details">
                 Status: {vehicle.data.state}

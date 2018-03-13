@@ -1,3 +1,13 @@
 .vehicles-list {
     overflow: auto;
+
+    &__vehicle {
+        min-height: 70px;
+        cursor: pointer;
+        border-bottom: 1px solid #4a4a4a4d;
+
+        &--selected {
+            background-color: #ffe9a1;
+        }
+    }
 }
