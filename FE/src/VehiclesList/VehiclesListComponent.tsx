@@ -13,7 +13,7 @@ interface Props {
     selectVehicle(vehicle: Vehicle): void;
 }
 
-export default class VehiclesListComponent extends React.Component<Props> {
+export default class VehiclesListComponent extends React.PureComponent<Props> {
     private localSelectedVehicleId: string;
 
     onSelectVehicle(vehicle: Vehicle) {

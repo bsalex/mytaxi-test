@@ -8,7 +8,7 @@ interface AppComponentContainerProps {
     fetchVehicles(): void;
 }
 
-class AppComponentContainer extends React.Component<AppComponentContainerProps> {
+class AppComponentContainer extends React.PureComponent<AppComponentContainerProps> {
     componentWillMount() {
         this.props.fetchVehicles();
     }
