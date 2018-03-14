@@ -4,12 +4,14 @@ import { Vehicle } from '../VehicleType/VehicleType';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, TrafficLayer } from 'react-google-maps';
 
 interface Props {
-    className: string;
+    className?: string;
     vehicles: Vehicle[];
     isLoading: boolean;
     selectedVehicleId?: string;
     selectVehicle(vehicle: Vehicle): void;
 }
+
+let cachedDefaultCenter: google.maps.LatLngLiteral | undefined = undefined;
 
 const VehiclesMap = withScriptjs(withGoogleMap(function (
     {className, vehicles, isLoading, selectedVehicleId, selectVehicle}: Props
@@ -25,11 +27,18 @@ const VehiclesMap = withScriptjs(withGoogleMap(function (
         newCenter = { lat: selectedVehicle.coordinates.latitude, lng: selectedVehicle.coordinates.longitude };
     }
 
+    if (!cachedDefaultCenter) {
+        const avgLatitude = vehicles.reduce((a, b) => a + b.coordinates.latitude, 0) / vehicles.length;
+        const avgLongitude = vehicles.reduce((a, b) => a + b.coordinates.longitude, 0) / vehicles.length;
+
+        cachedDefaultCenter = { lat: avgLatitude, lng: avgLongitude };
+    }
+
     return (
         <div className={classnames(className, 'map')}>
             <GoogleMap
                 defaultZoom={12}
-                defaultCenter={{ lat: vehicles[0].coordinates.latitude, lng: vehicles[0].coordinates.longitude }}
+                defaultCenter={cachedDefaultCenter}
                 {...(newCenter ? { center: newCenter } : {})}
             >
                 {vehicles.map((vehicle, index) => {
@@ -98,7 +107,7 @@ export default function(props: Props) {
         <VehiclesMap
             googleMapURL={mapUrl}
             loadingElement={<div style={{ height: `100%` }} />}
-            containerElement={<div style={{ height: `100%` }} />}
+            containerElement={<div className={classnames(props.className, 'map')} style={{ height: `100%` }} />}
             mapElement={<div style={{ height: `100%` }} />}
             {...props}
         />

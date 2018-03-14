@@ -6,7 +6,7 @@ import { connect, MapStateToProps, MapDispatchToProps } from 'react-redux';
 import * as appActions from '../App/AppActions';
 
 interface OwnProps {
-    className: string;
+    className?: string;
 }
 
 interface StateProps extends OwnProps {

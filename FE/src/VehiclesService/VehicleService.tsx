@@ -11,7 +11,11 @@ class VehicleService {
     async fetchVehicles(): Promise<Vehicle[]> {
         const vehiclePromises = this.vehicleTypes.map((type) => type.loader());
 
-        return ([] as Vehicle[]).concat(...(await Promise.all(vehiclePromises)));
+        return ([] as Vehicle[]).concat(
+            ...(await Promise.all(vehiclePromises))
+        ).sort((a, b) => {
+            return a.coordinates.longitude - b.coordinates.longitude;
+        });
     }
 
     getListView(vehicle: Vehicle): React.ComponentType<Vehicle> {
@@ -23,11 +27,6 @@ class VehicleService {
 
         return vehicleType.listView;
     }
-/*
-    getMapView(vehicle: Vehicle) {
-
-    }
-*/
 }
 
 export default new VehicleService();

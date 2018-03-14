@@ -11,9 +11,7 @@ export default function() {
                 <AppHeader className="app__header" />
                 <VehiclesListComponentContainer className="app__vehicles-list" />
             </div>
-            <div className="app__map">
-                <MapComponentContainer className="" />
-            </div>
+            <MapComponentContainer className="app__map" />
         </div>
     );
 }

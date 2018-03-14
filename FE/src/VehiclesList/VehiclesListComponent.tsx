@@ -6,7 +6,7 @@ import VehicleService from '../VehiclesService/VehicleService';
 import './VehiclesList.pcss';
 
 interface Props {
-    className: string;
+    className?: string;
     vehicles: Vehicle[];
     isLoading: boolean;
     selectedVehicleId?: string;
