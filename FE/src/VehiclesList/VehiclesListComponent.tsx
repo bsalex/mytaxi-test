@@ -39,7 +39,8 @@ export default class VehiclesListComponent extends React.Component<Props> {
     render() {
         return (
             <div className={classnames(this.props.className, 'vehicles-list')}>
-                {this.props.vehicles.map((vehicle) => {
+                {this.props.isLoading && (<div className="app__loader" />)}
+                {!this.props.isLoading && this.props.vehicles.map((vehicle) => {
                     const VehicleComponent = VehicleService.getListView(vehicle);
 
                     return (

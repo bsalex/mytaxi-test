@@ -5,7 +5,12 @@ class VehicleService {
     private vehicleTypes: VehicleType[] = [];
 
     registerVehicleType(newType: VehicleType) {
-        this.vehicleTypes = this.vehicleTypes.filter((type) => type.name !== newType.name).concat(newType);
+        this.unregisterVehicleType(newType);
+        this.vehicleTypes.push(newType);
+    }
+
+    unregisterVehicleType(typeToUnregister: VehicleType) {
+        this.vehicleTypes = this.vehicleTypes.filter((type) => type.name !== typeToUnregister.name);
     }
 
     async fetchVehicles(): Promise<Vehicle[]> {

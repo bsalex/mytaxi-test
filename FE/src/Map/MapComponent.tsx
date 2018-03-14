@@ -2,6 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import { Vehicle } from '../VehicleType/VehicleType';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, TrafficLayer } from 'react-google-maps';
+import './Map.pcss';
 
 interface Props {
     className?: string;
@@ -106,8 +107,11 @@ export default function(props: Props) {
     return (
         <VehiclesMap
             googleMapURL={mapUrl}
-            loadingElement={<div style={{ height: `100%` }} />}
-            containerElement={<div className={classnames(props.className, 'map')} style={{ height: `100%` }} />}
+            loadingElement={
+                <div className={classnames(props.className, 'map')}>
+                    <div className="app__loader" />
+                </div>}
+            containerElement={<div className={classnames(props.className, 'map')} />}
             mapElement={<div style={{ height: `100%` }} />}
             {...props}
         />
