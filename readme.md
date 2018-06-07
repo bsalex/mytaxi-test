@@ -1,4 +1,4 @@
-#mytaxi React Frontend Test
+# mytaxi React Frontend Test
 Please finish the tasks specified below and send us the code as a '.zip' file afterwards.
 Keep the following in mind while implementing the given tasks:
 - The task is chosen to be simple enough to be finished within a maximum of four hours.
@@ -12,12 +12,12 @@ Keep the following in mind while implementing the given tasks:
 Good Luck!
 
 ## Tasks:
-###Task 1: Retrieving Data & List
+### Task 1: Retrieving Data & List
 Write a JavaScript app that displays a list of vehicles for both mytaxi and car2go.
 - You can load the vehicles from the server you'll start (info on starting it in the "Setup" section)
     - The response from the server is in JSON and can be found in the files `Server/mytaxi/vehicles.json` and `Server/car2go/vehicles.json`.
 - Fill the List with some useful vehicle-information provided by the API. You can create a custom cell with specific vehicle data - simply impress us ;-)
-###Task 2: Map
+### Task 2: Map
 Extend your app, to show the vehicles from the list within a map.
 
 
